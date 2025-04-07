@@ -36,9 +36,10 @@ le1 = 23
 le2 = 24
 
 def option(v):
+    global state
     """this function does an option according to what is given"""
-    step_size = 10
-    step_size_turn = 10
+    #step_size = 10
+    #step_size_turn = 10
     match v:
         case "w":
             forward()
@@ -107,7 +108,7 @@ def intro():
     robo.set_mode(re1, pigpio.INPUT)
     robo.set_mode(re2, pigpio.INPUT)
     robo.set_mode(le1, pigpio.INPUT)
-    robo.set_mode(le1, pigpio.INPUT)
+    robo.set_mode(le2, pigpio.INPUT)
     #setup I2C pins
     robo.set_mode(g1, pigpio.OUTPUT)
     robo.set_mode(g2, pigpio.OUTPUT)
@@ -141,7 +142,7 @@ def main():
         time.sleep(0.1)
     #exits the program puts
     """TODO deinit"""
-    robo.end()
+    robo.stop()
 
 #main
 main()
