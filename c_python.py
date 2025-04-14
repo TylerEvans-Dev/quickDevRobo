@@ -121,7 +121,7 @@ def action_option(v):
             leftb()
         case "c":
             rightb()
-        case "c":
+        case "x":
             I2C_Op(v)
         case _:
             print("not valid")
@@ -213,6 +213,10 @@ def read_lm():
     print("reading left motor")
 
 def read_rm():
+    en = robo.read(re1)
+    en1 = robo.read(re2)
+    print(f"the value is {re1}")
+    print(f"the value measured 2 is {re2}")
     print("reading right motor")
 
 def read_I2C(addr=0):
@@ -238,6 +242,7 @@ def de_init():
 def main():
     intro()
     while(state == 1):
+        read_rm()
         word = input("option?")
         action_option(word)
         time.sleep(0.1)
