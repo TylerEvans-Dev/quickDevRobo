@@ -110,11 +110,17 @@ def action_option(v):
         case "q":
             stop()
         case "r":
+            stop()
             state = 0
         case "e":
             vac_on()
         case "ee":
             vac_off()
+
+        case "z":
+            leftb()
+        case "c":
+            rightb()
         case "c":
             I2C_Op(v)
         case _:
@@ -127,29 +133,41 @@ def vac_off():
 def forward(steps=0):
     print("forward " + str(steps))
     robo.write(m1, HIGH)
-    robo.write(m2, HIGH)
+    robo.write(m2, LOW)
     robo.write(m3, LOW)
-    robo.write(m4, LOW)
+    robo.write(m4, HIGH)
 
 def backward(steps = 0):
     print("backwords " + str(steps))
     robo.write(m1, LOW)
-    robo.write(m2, LOW)
+    robo.write(m2, HIGH)
     robo.write(m3, HIGH)
-    robo.write(m4, HIGH)
+    robo.write(m4, LOW)
 def left(steps = 0):
     print("left " + str(steps))
+    robo.write(m1, HIGH)
+    robo.write(m2, LOW)
+    robo.write(m3, LOW)
+    robo.write(m4, LOW)
+def leftb(steps = 0):
+    print("left backwords " + str(steps))
     robo.write(m1, LOW)
     robo.write(m2, HIGH)
     robo.write(m3, LOW)
     robo.write(m4, LOW)
 def right(steps = 0):
     print("right " + str(steps))
-    robo.write(m1, HIGH)
+    robo.write(m1, LOW)
     robo.write(m2, LOW)
     robo.write(m3, LOW)
+    robo.write(m4, HIGH)
+def rightb(steps = 0):
+    print("right backwords " + str(steps))
+    robo.write(m1, LOW)
+    robo.write(m2, LOW)
+    robo.write(m3, HIGH)
     robo.write(m4, LOW)
-def stop():
+def stop(steps = 0):
     robo.write(m1, LOW)
     robo.write(m2, LOW)
     robo.write(m3, LOW)
