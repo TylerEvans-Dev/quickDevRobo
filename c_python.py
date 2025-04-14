@@ -116,12 +116,11 @@ def action_option(v):
             vac_on()
         case "ee":
             vac_off()
-
         case "z":
             leftb()
         case "c":
             rightb()
-        case "c":
+        case "x":
             I2C_Op(v)
         case _:
             print("not valid")
